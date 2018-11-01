@@ -32,14 +32,16 @@ LOCAL_MODULE:= libnative_codec19
 LOCAL_SRC_FILES:= libnative_codec19.so
 include $(PREBUILT_SHARED_LIBRARY)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE:= navite_mediacodec
+LOCAL_SRC_FILES:= libnavite_mediacodec.so
+include $(PREBUILT_SHARED_LIBRARY)
+
 # Program
 include $(CLEAR_VARS)
 LOCAL_MODULE := ffmpegdecoder
-LOCAL_SRC_FILES := simplest_ffmpeg_decoder.c \
-					mediacodec_decoder.c \
-					mediacodec_utils.c \
-					NativeCodec.cpp
+LOCAL_SRC_FILES := simplest_ffmpeg_decoder.c 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/include
 LOCAL_LDLIBS := -llog -lz
-LOCAL_SHARED_LIBRARIES := ffmpeg
+LOCAL_SHARED_LIBRARIES := ffmpeg navite_mediacodec
 include $(BUILD_SHARED_LIBRARY)
